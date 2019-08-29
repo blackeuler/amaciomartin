@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default () => (
     <div>
-        <Link href="https://www.instagram.com/macimaserati/"><a ><img className="grow" src="/static/insta.png"/></a></Link>
-        <Link href="https://www.facebook.com/amacio.martin"><a ><img className="grow" src="/static/fbook.png"/></a></Link>
+        <a href="https://www.instagram.com/macimaserati/"><img className="grow" src="/static/insta.png"/></a>
+        <a href="https://www.facebook.com/amacio.martin" ><img className="grow" src="/static/fbook.png"/></a>
         <style jsx>
             {`
             div{
@@ -15,13 +15,14 @@ export default () => (
                 position: fixed;
                 text-align: center;
                 width: 100%;
-                padding:10px;
+                
                 color: rgb(241, 8, 8);
             }
             img{
                 width: 30px;
                 height: 30px;
-                margin:10px;
+                margin-left:10px;
+                margin-top:2px;
             }
             .grow { 
                     transition: all .2s ease-in-out; 
