@@ -36,6 +36,7 @@ const Header = () => (
                     font-size: calc(10px + 2vmin);
                     color: #c10000;
                     width: 100%;
+                    
                   }
                 
                   .grow { 
