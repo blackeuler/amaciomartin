@@ -37,6 +37,7 @@ const Gallery = (props) =>(
             .container{
                 margin:0 auto;
                 padding:10px;
+                align: center;
             }
             img{
                 width:300px;
