@@ -8,8 +8,9 @@ const Header = () => (
     <header className="header">
                 
               <Link href="/"><a>Home</a></Link>
-              <Link href="about"><img src="/static/logo.png" className="logo grow" alt="logo" /></Link>
+              <Link href="/"><img src="/static/logo.png" className="logo grow" alt="logo" /></Link>
               <Link href="/gallery"><a>Gallery</a></Link>
+              <Link href="/about"><a>About</a></Link>
 
 
               <style jsx>{`
@@ -51,6 +52,7 @@ const Header = () => (
                         text-decoration: none;
                         color: #c10000;
                         transition: all .2s ease-in-out;
+                        margin:1.0em;
                       }
                       a:hover{
                         color: white;
