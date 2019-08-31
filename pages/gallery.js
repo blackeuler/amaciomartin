@@ -1,57 +1,44 @@
 import React from 'react';
 import Page from '../components/page';
+import Album from '../components/album'
 
 const Gallery = (props) =>(
     <Page>
         
-        <div className="grid container">
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
-            <img  className="grow" src="static/sample.jpg"/>
+        <div className="grid ">
+           <Album
+            title="Hello"
+            cover="/static/sample.jpg"
+           />
+           <Album
+            title="Hello"
+            cover="/static/sample.jpg"
+           />
+           <Album
+            title="Hello"
+            cover="/static/sample.jpg"
+           />
+           <Album
+            title="Hello"
+            cover="/static/sample.jpg"
+           />
+            
+            
         </div>
 
         <style jsx>
             {`
 
-            .container{
-                margin:0 auto;
-                padding:10px;
-                align: center;
-            }
-            img{
-                width:300px;
-                border: 1px solid black;
-                margin:1vh;
+
+            @media screen and (min-width: 600px) {
+                .grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                }            
             }
 
-            .grow { 
-                transition: all .2s ease-in-out; 
-            }
-                     
-            .grow:hover { 
-                transform: scale(1.05); 
-            }
+            
             
             `}
         </style>

@@ -12,7 +12,6 @@ export default () => (
                 min-height: 1vh;
                 left: 0;
                 bottom: 0;
-                position: fixed;
                 text-align: center;
                 width: 100%;
                 
