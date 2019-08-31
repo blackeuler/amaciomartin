@@ -23,23 +23,42 @@ const About = (props) =>(
             {`
                 .grid{
                     display:grid;
-                    grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1fr ;
                     
                 }
+                @media screen and (min-width: 600px) {
+                    .grid {
+                        display:grid;
+                        grid-template-columns: 1fr 1fr;
+                    }
+                
+                }
                 .left{
-                    height:100vh;
+                    height:40vh;
                 }
 
                 .left img{
                     height:100%;
                     width:100%;
+                    margin:0 auto;
+                    padding:10px;
+                }
+                @media screen and (min-width:600px){
+                    .left{
+                        height:100vh;
+                    }
+
+                    .left img{
+                        height:100%;
+                        width:100%;
+                    }
                 }
                 h1{
                     text-align:center;
                 }
                 .right{
                     background-color:white;
-                    grid-columns:2;
+                    
                     text-align:center;
                     font-size: calc(10px + 2vmin);
                     text-align: justify;
