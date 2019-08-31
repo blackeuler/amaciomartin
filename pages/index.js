@@ -48,6 +48,7 @@ Home.getInitialProps = async function() {
   var entries= await client.getEntries()
   var url = await entries.includes.Asset[5].fields.file.url
   var urls = await entries.includes.Asset.map(x => x.fields.file.url)
+  console.log("Loading");
   
   return {
      photo:url,
