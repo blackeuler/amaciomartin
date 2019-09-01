@@ -1,56 +1,55 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Page from '../components/page'
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import {client} from '../services/contentfulClient'
+import {client} from '../services/contentfulClient';
 
-function Home({ photos}) {
-  return(
-    <Page>
-      <Carousel
-        autoPlay
-        
-        infiniteLoop
-      >
-        {
-          photos.slice(0,4).map(x=>(
-            <div className="container">
-              <img src={x} />
-            </div>
-          ))
+class Home extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            data:[],
+            loading:false,
         }
-        
-      </Carousel>
-      
-      <style jsx>
-      {`
-        .container >img{
-          height:60vh;
-          width:auto;
-        }
-      
-      `}
-      </style>
-    
-  </Page>
-  )
+    }
+    componentDidMount(){
+        const fetchData = async () => {
+            this.setState({loading:true});
+            const res = await client.getEntries({
+                content_type: 'slideshow'
+              });
+            const entries2 = res.items[0].fields.featuredImages.map(x=>(
+                x.fields.photo.fields.file.url
+            ));
+            this.setState({
+                loading:false,
+                data:entries2
+            });
+          };
+          fetchData();
+    }
+
+    render(){
+        return(
+            <Page>
+                {this.state.loading ? (
+            <div>Loading ...</div>
+        ) : (
+            <Carousel
+                autoPlay
+                infiniteLoop
+            >
+                { this.state.data.map(x=>(
+                    <div className="container">
+                        <img src={x} />
+                    </div>
+                ))}
+            </Carousel>
+        )}
+        </Page> 
+        )
+    }
 }
 
-Home.getInitialProps = async function() {
-  var contentTypeId = 'slideshow'
-    
-    var content = await client.getEntries({
-        content_type: contentTypeId
-      });
-      var entries=content
-      console.log(entries)
-  var urls = await entries.includes.Asset.map(x => x.fields.file.url)
-  
-  return {
-     photos:urls
-  };
-};
 
-
-export default Home
+export default Home;

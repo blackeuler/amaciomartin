@@ -3,8 +3,8 @@ import React from 'react'
 export default ({title,cover}) =>(
     <div className="cell">
                 
-                <img  className="responsive-img" src={`${cover}`}/>
-                <h2>{title}</h2>
+        <img  className="responsive-img" src={`${cover}`}/>
+        <h2>{title}</h2>
         <style jsx>
         {`
                 .cell{

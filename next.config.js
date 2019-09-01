@@ -7,4 +7,5 @@ module.exports = withCSS({
     // number of pages that should be kept simultaneously without being disposed
     pagesBufferLength: 2,
   },
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/amaciomartin' : '',
 })
