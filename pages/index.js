@@ -3,15 +3,9 @@ import Page from '../components/page'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import * as contentful from 'contentful';
+import {client} from '../services/contentfulClient'
 
-
-var client = contentful.createClient({
-  space: '6glmg7qq7oyg',
-  accessToken: '373d3fae019b3a1e90066a9d08748c59b08322d1759044f26e258594138194e2'
-})
-
-function Home({photo, photos}) {
+function Home({ photos}) {
   return(
     <Page>
       <Carousel
@@ -44,14 +38,16 @@ function Home({photo, photos}) {
 }
 
 Home.getInitialProps = async function() {
-  var photo = ''
-  var entries= await client.getEntries()
-  var url = await entries.includes.Asset[5].fields.file.url
+  var contentTypeId = 'slideshow'
+    
+    var content = await client.getEntries({
+        content_type: contentTypeId
+      });
+      var entries=content
+      console.log(entries)
   var urls = await entries.includes.Asset.map(x => x.fields.file.url)
-  console.log("Loading");
   
   return {
-     photo:url,
      photos:urls
   };
 };

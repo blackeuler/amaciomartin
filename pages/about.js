@@ -1,19 +1,18 @@
 import React from 'react';
 import Page from '../components/page';
+import {client} from '../services/contentfulClient'
 
-const About = (props) =>(
+const About = (entries) =>(
     <Page>
         <div className="grid">
             <div className="left">
-                <img id="bioPic" src="static/bio.jpg" alt="Picture of Amacio"/>
+                <img id="bioPic" src={`${entries.entries[0].fields.biophoto.fields.file.url}`} alt="Picture of Amacio"/>
             </div>
             <div className="right">
                 <article>
                     <h1>About Me</h1>
                     <p>
-                        My name is Amacio Martin and i have been a photography for as long as I can remeber. 
-                        I love capturing the human form I  find it fascinating. I hope that you do as well.
-                        This is my website/portfolio of all that I am working on. I hope we can work together in the future. Thanks
+                       {`${entries.entries[0].fields.bioText}`}
                     </p>
                 </article>
             </div>
@@ -70,5 +69,20 @@ const About = (props) =>(
         </style>
     </Page>
 )
+
+About.getInitialProps = async function() {
+    var contentTypeId = 'contactPage'
+      
+      var content = await client.getEntries({
+          content_type: contentTypeId
+        });
+        var entries=content.items
+    
+    
+   
+    return {
+       entries
+    };
+  };
 
 export default About;

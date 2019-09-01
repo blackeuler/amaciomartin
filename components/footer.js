@@ -14,7 +14,7 @@ export default () => (
                 bottom: 0;
                 text-align: center;
                 width: 100%;
-                
+                position:fixed;
                 color: rgb(241, 8, 8);
             }
             img{
