@@ -1,36 +1,40 @@
-import { useRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import Page from '../../components/page';
 import Album from '../../components/album';
 import {client} from '../../services/contentfulClient'
+
 
 class Photos extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            entries:{}
+            entries:{},
+            id:props.router.query.id
         }
     }
     componentDidMount(){
       const fetchData = async () =>{
-        var content = await client.getEntries({'sys.id':query.id})
+        console.log(this.state.id)
+        var content = await client.getEntries({'sys.id':this.state.id})
         var entries = await content.items[0].fields.images;
-        this.setState(entries)
+        console.log(entries)
+        this.setState({entries:entries})
       }
       fetchData();
     }
     render(){
-        const router = useRouter();
         return (
             <Page>
-              <h1>{router.query.name}</h1>
+              
               <div className="grid ">
                 {
-                    entries.map(entry =>(
+                    this.state.entries[0] ? (
+                    this.state.entries.map(entry =>(
                         <Album
                             title={`${entry.fields.title}`}
                             cover={`${entry.fields.photo.fields.file.url}`}
                         />      
-                    ))
+                    ))):(<div>Loading</div>)
                 }
               </div>
                 <style jsx>
@@ -54,4 +58,4 @@ class Photos extends React.Component{
     }
 }
 
-export default Photos;
+export default withRouter(Photos);
