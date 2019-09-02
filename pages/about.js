@@ -2,21 +2,58 @@ import React from 'react';
 import Page from '../components/page';
 import {client} from '../services/contentfulClient'
 
-const About = (entries) =>(
-    <Page>
-        <div className="grid">
+
+export default class About extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            entries:{},
+            loading:true,
+        }
+    }
+    componentDidMount(){
+        const fetchData = async ()=>{
+            var contentTypeId = 'contactPage'
+      
+            var content = await client.getEntries({
+                content_type: contentTypeId
+            });
+            var entries=content.items[0]
+            console.log(entries)
+            if(entries){
+                const picture = entries.fields.biophoto.fields.file.url
+                const text = entries.fields.bioText
+                this.setState({
+                    entries:entries,
+                    bioPic:picture,
+                    text:text,
+                    loading:false,
+                })
+            }
+        }
+        fetchData()
+        
+    }
+    render(){
+
+        return(
+        <Page>
+            {this.state.loading ? (<div>Loading</div> ):(<div className="grid">
             <div className="left">
-                <img id="bioPic" src={`${entries.entries[0].fields.biophoto.fields.file.url}`} alt="Picture of Amacio"/>
+                <img id="bioPic" src={`${this.state.bioPic}`} alt="Picture of Amacio"/>
             </div>
             <div className="right">
                 <article>
                     <h1>About Me</h1>
                     <p>
-                       {`${entries.entries[0].fields.bioText}`}
+                       {`${this.state.text}`}
                     </p>
                 </article>
             </div>
-        </div>
+        </div>)
+            
+        
+            }
 
         <style jsx>
             {`
@@ -68,21 +105,6 @@ const About = (entries) =>(
             `}
         </style>
     </Page>
-)
-
-About.getInitialProps = async function() {
-    var contentTypeId = 'contactPage'
-      
-      var content = await client.getEntries({
-          content_type: contentTypeId
-        });
-        var entries=content.items
-    
-    
-   
-    return {
-       entries
-    };
-  };
-
-export default About;
+        )
+    }
+}

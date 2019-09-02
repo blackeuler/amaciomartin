@@ -7,6 +7,7 @@ import {client} from '../../services/contentfulClient'
 class Photos extends React.Component{
     constructor(props){
         super(props);
+        console.log(props.router)
         this.state={
             entries:{},
             id:props.router.query.id
@@ -16,9 +17,12 @@ class Photos extends React.Component{
       const fetchData = async () =>{
         console.log(this.state.id)
         var content = await client.getEntries({'sys.id':this.state.id})
+
         var entries = await content.items[0].fields.images;
-        console.log(entries)
-        this.setState({entries:entries})
+        if(entries){
+            this.setState({entries:entries})
+        }
+        
       }
       fetchData();
     }
