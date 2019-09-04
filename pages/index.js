@@ -4,34 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import {client} from '../services/contentfulClient';
 
-class Home extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            data:[],
-            loading:false,
-        }
-    }
-    componentDidMount(){
-        const fetchData = async () => {
-            this.setState({loading:true});
-            const res = await client.getEntries({
-                content_type: 'slideshow'
-              });
-            const entries2 = res.items[0].fields.featuredImages.map(x=>(
-                x.fields.photo.fields.file.url
-            ));
-            this.setState({
-                loading:false,
-                data:entries2
-            });
-          };
-          fetchData();
-    }
-
-    render(){
-        return(
-            <Page>
+function Home({data}){
+    return(
+        <Page>
                 {this.state.loading ? (
             <div>Loading ...</div>
         ) : (
@@ -39,7 +14,7 @@ class Home extends React.Component{
                 autoPlay
                 infiniteLoop
             >
-                { this.state.data.map(x=>(
+                { data.map(x=>(
                     <div className="container">
                         <img src={x} />
                     </div>
@@ -47,9 +22,17 @@ class Home extends React.Component{
             </Carousel>
         )}
         </Page> 
-        )
-    }
+    )
 }
 
+Home.getInitialProps = async () => {
+    const res = await client.getEntries({
+        content_type: 'slideshow'
+      });
+    const entries2 = await res.items[0].fields.featuredImages.map(x=>(
+        x.fields.photo.fields.file.url
+    ));
+    return { data: entries2 }
+  }
 
-export default Home;
+  export default Home;
