@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import Page from '../components/page'
-import "../styles.css";
 import { Carousel } from 'react-responsive-carousel';
 import {client} from '../services/contentfulClient';
 
