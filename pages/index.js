@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Page from '../components/page'
 import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {client} from '../services/contentfulClient';
 
 function Home({data}){
