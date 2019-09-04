@@ -1,6 +1,7 @@
 // next.config.js
 const withCSS = require('@zeit/next-css')
 module.exports = withCSS({
+  cssModules: true,
   onDemandEntries: {
     // period (in ms) where the server will keep pages in the buffer
     maxInactiveAge: 25 * 1000,
