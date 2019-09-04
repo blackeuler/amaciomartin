@@ -1,7 +1,7 @@
 import React from 'react';
 import Page from '../components/page';
 import {client} from '../services/contentfulClient'
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const About = (entries) =>(
     <Page>
         <div className="grid">

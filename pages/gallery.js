@@ -3,7 +3,7 @@ import Page from '../components/page';
 import Album from '../components/album';
 import Link from 'next/link';
 import * as contentful from 'contentful';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 var client = contentful.createClient({
   space: '63i3zfsp3i6k',
