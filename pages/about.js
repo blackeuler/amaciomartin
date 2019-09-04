@@ -1,7 +1,9 @@
 import React from 'react';
 import Page from '../components/page';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {client} from '../services/contentfulClient'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const About = (entries) =>(
     <Page>
         <div className="grid">

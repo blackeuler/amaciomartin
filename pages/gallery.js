@@ -3,7 +3,8 @@ import Page from '../components/page';
 import Album from '../components/album';
 import Link from 'next/link';
 import {client} from '../services/contentfulClient';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 function Gallery(entries){

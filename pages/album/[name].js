@@ -2,7 +2,8 @@ import { withRouter } from 'next/router';
 import Page from '../../components/page';
 import Album from '../../components/album';
 import {client} from '../../services/contentfulClient'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class Photos extends React.Component{
     constructor(props){

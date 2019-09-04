@@ -7,11 +7,14 @@ import Slider from "react-slick";
 import {client} from '../services/contentfulClient';
 
 var settings = {
+    
     dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+    fade: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
   };
 
 function Home({data}){
@@ -20,17 +23,15 @@ function Home({data}){
                 {data==null ? (
             <div>Loading ...</div>
         ) : (
-            <div className="sliderback">
+            
                 <Slider {...settings}>
                 { data.map(x=>(
-                    <div><img className="imas"src={x} /></div>
-                    
-                    
-                    
-                
+                    <div className="sliderback">
+                        <img className="imas"src={x} />
+                    </div>
             ))}
             </Slider>
-            </div>
+            
             
             
         )}
@@ -40,12 +41,14 @@ function Home({data}){
         <style jsx>
             {`
                     .imas{
-                        height:auto;
-                        width:100%;
+                        
+                        width: auto ;
+                        max-width: 100% ;
+                        height: auto ;
                     }
                     .sliderback{
+                        
                         background-color:black;
-                        height:30vh;
                     }
             `}
         </style>
