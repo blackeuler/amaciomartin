@@ -16,6 +16,11 @@
     "nuka-carousel": "^4.5.11",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-responsive-carousel": "^3.1.50"
+    "react-responsive-carousel": "^3.1.50",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "url-loader": "^2.1.0"
   }
 }

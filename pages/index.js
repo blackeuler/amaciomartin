@@ -1,9 +1,18 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import Page from '../components/page'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
-import Carousel from 'nuka-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {client} from '../services/contentfulClient';
+
+var settings = {
+    dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+  };
 
 function Home({data}){
     return(
@@ -11,21 +20,35 @@ function Home({data}){
                 {data==null ? (
             <div>Loading ...</div>
         ) : (
-            <Carousel
-                
-                cellAlign="center"
-                dragging={true}
-                easing="easeInOutElastic"
-            >
+            <div className="sliderback">
+                <Slider {...settings}>
                 { data.map(x=>(
+                    <div><img className="imas"src={x} /></div>
                     
-                        <img src={x} />
                     
-                ))}
-            </Carousel>
+                    
+                
+            ))}
+            </Slider>
+            </div>
+            
+            
         )}
 
         
+
+        <style jsx>
+            {`
+                    .imas{
+                        height:auto;
+                        width:100%;
+                    }
+                    .sliderback{
+                        background-color:black;
+                        height:30vh;
+                    }
+            `}
+        </style>
         </Page> 
     )
 }
