@@ -7,7 +7,7 @@ import {client} from '../services/contentfulClient';
 function Home({data}){
     return(
         <Page>
-                {this.state.loading ? (
+                {data==null ? (
             <div>Loading ...</div>
         ) : (
             <Carousel
