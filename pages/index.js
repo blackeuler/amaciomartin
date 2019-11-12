@@ -42,19 +42,32 @@ function Home({data}){
         <style jsx>
             {`
                     .imas{
-                        display: block;
-                        margin-right:auto;
-                        margin-left:auto;
-                        width:40%;
-                        height:auto;                        
+                        
+                        width:auto;
+                        height:90%;                        
                         
                     }
                     .sliderback{
                         width:80vw;
                         height:80vh;
                         background:black;
-                        display:flex;
-                        justify-content:center;
+                        
+                    }
+                    @media screen and (min-width:700px){
+                        .imas{
+                            display: block;
+                            margin-right:auto;
+                            margin-left:auto;
+                            width:40%;
+                            height:auto;               
+                        }
+                        .sliderback{
+                            width:80vw;
+                            height:80vh;
+                            background:black;
+                            display:flex;
+                            justify-content:center;
+                        }    
                     }
             `}
         </style>
