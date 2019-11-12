@@ -9,9 +9,9 @@ import {client} from '../services/contentfulClient';
 var settings = {
     
     dots: true,
-    fade: true,
+    fade: false,
     infinite: true,
-    speed: 400,
+    speed: 900,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -28,6 +28,7 @@ function Home({data}){
                 { data.map(x=>(
                     <div className="sliderback">
                         <img className="imas"src={x} />
+                        
                     </div>
             ))}
             </Slider>
@@ -41,14 +42,19 @@ function Home({data}){
         <style jsx>
             {`
                     .imas{
+                        display: block;
+                        margin-right:auto;
+                        margin-left:auto;
+                        width:40%;
+                        height:auto;                        
                         
-                        width: auto ;
-                        max-width: 100% ;
-                        height: auto ;
                     }
                     .sliderback{
-                        
-                        background-color:black;
+                        width:80vw;
+                        height:80vh;
+                        background:black;
+                        display:flex;
+                        justify-content:center;
                     }
             `}
         </style>
