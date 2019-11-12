@@ -8,7 +8,7 @@ import {client} from '../services/contentfulClient';
 
 var settings = {
     
-    dots: true,
+    dots: false,
     fade: false,
     infinite: true,
     speed: 900,
@@ -48,12 +48,12 @@ function Home({data}){
                         
                     }
                     .sliderback{
-                        width:80vw;
+                        overflow:hidden;
                         height:80vh;
                         background:black;
                         
                     }
-                    @media screen and (min-width:700px){
+                    @media screen and (min-width:700px) and (max-height:800px){
                         .imas{
                             display: block;
                             margin-right:auto;
