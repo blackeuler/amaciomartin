@@ -48,17 +48,17 @@ function Home({data}){
                         
                     }
                     .sliderback{
-                        overflow:hidden;
+                        
                         height:80vh;
                         background:black;
                         
                     }
-                    @media screen and (min-width:700px) and (max-height:800px){
+                    @media screen and (min-width:700px) {
                         .imas{
                             display: block;
                             margin-right:auto;
                             margin-left:auto;
-                            width:40%;
+                            width:50%;
                             height:auto;               
                         }
                         .sliderback{
@@ -69,6 +69,23 @@ function Home({data}){
                             justify-content:center;
                         }    
                     }
+                    @media screen and (min-width:700px) and (max-height:800px){
+                        .imas{
+                            display: block;
+                            margin-right:auto;
+                            margin-left:auto;
+                            width:50%;
+                            height:auto;               
+                        }
+                        .sliderback{
+                            width:80vw;
+                            height:80vh;
+                            background:black;
+                            display:flex;
+                            justify-content:center;
+                        }    
+                    }
+                    
             `}
         </style>
         </Page> 
